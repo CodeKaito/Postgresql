@@ -168,3 +168,5 @@ Common Parameters to Consider:
 It's important to refer to the official PostgreSQL documentation for a detailed explanation of each parameter: [PostgreSQL Configuration Settings](https://www.postgresql.org/docs/current/runtime-config.html).
 
 Make changes carefully, and always have a backup of your `postgresql.conf` file before making modifications. Additionally, monitor the PostgreSQL logs (`pg_log` directory) for any warnings or errors after restarting the server.
+
+.
