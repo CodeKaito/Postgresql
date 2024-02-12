@@ -40,7 +40,7 @@ Ensure that your PostgreSQL server is configured to allow connections from your 
 
 Wrap your code in a try-catch block to handle potential connection errors.
 
-```
+```javascript
 (async () => {
   const client = await pool.connect();
   try {
