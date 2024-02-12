@@ -4,25 +4,24 @@ require('dotenv').config({
     path: path.join(__dirname, '.env'),
 });
 
-const { Pool, Client} = require('pg');
+const { Pool } = require('pg');
 
 const pool = new Pool({
-    user: process.env.USER,
-    host: process.env.HOST,
-    databse: process.env.DATABASE,
-    password: process.env.PASSWORD,
-    port: process.env.PORT,
+  user: 'kaito',
+  password: '060697',
+  host: '192.168.1.21',
+  port: 5432,
+  database: 'people',
 });
 
-(async () => {
-    const client = await pool.connect();
-    try {
-        const rep = await client.query('SELECT current_user');
-        const current_user = row[0]['current_user'];
-        console.log(current_user);
-    } catch (error) {
-       console.log(error); 
-    } finally {
-        client.release();
-    }
-})();
+pool.query('SELECT current_user', (error, result) => {
+  if (error) {
+    console.error('Error executing query:', error);
+  } else {
+    const current_user = result.rows[0]['current_user'];
+    console.log('Current user:', current_user);
+  }
+
+  // Don't forget to release the client back to the pool
+  pool.end();
+});
